@@ -2,17 +2,16 @@ package com.lealpha.learningwhilesleeping.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "tbl_users")
 public class Users {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userId;
     @Column(name = "f_name")
@@ -33,4 +32,8 @@ public class Users {
     private enum status{active, suspend, deactive};
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkUserId")
+    private Set<Address> address;
+
 }

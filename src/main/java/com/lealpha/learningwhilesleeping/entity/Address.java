@@ -18,7 +18,9 @@ public class Address {
     private String zip;
     private String num;
     private String unit;
-    @Column(name = "fk_tbl_user_id")
-    private int fkTblUserId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private int fkUserId;
 
 }
