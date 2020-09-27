@@ -1,8 +1,11 @@
 package com.lealpha.learningwhilesleeping;
 
+import lombok.Data;
+
+@Data
 public class One {
     private int a;
     private int b;
-    private  String str;
+    private  double c;
 
 }
