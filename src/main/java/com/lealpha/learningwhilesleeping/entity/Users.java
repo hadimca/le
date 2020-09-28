@@ -13,7 +13,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
     @Column(name = "f_name")
     private String firstName;
     @Column(name = "l_name")
@@ -29,11 +29,13 @@ public class Users {
     private String educationName;
     @Column(name = "job_name")
     private String jobName;
-    private enum status{active, suspend, deactive};
+    private enum status{active, suspend};
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkUserId")
-    private Set<Address> address;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<Address> addresses;
 
 }
